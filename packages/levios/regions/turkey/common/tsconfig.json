@@ -1,0 +1,12 @@
+{
+  "extends": "../../../../../_tsconfig.base.json",
+  "compilerOptions": {
+    "paths": {
+      "@services": ["./src/services"],
+      "@models": ["./src/models"],
+      "@types": ["./src/types"],
+      "@adapters": ["./src/adapters"],
+      "@utils": ["./src/utils"]
+    }
+  }
+}

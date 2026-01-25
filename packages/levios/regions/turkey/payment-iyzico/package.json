@@ -1,0 +1,42 @@
+{
+  "name": "@levios/payment-iyzico",
+  "version": "0.1.0",
+  "description": "Levios iyzico Payment Provider - Turkish payment gateway with 3D Secure and installments",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "!dist/**/__tests__",
+    "!dist/**/__mocks__",
+    "!dist/**/__fixtures__"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/medusajs/medusa",
+    "directory": "packages/levios/regions/turkey/payment-iyzico"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Levios",
+  "license": "MIT",
+  "scripts": {
+    "watch": "yarn run -T tsc --build --watch",
+    "resolve:aliases": "yarn run -T tsc --showConfig -p tsconfig.json > tsconfig.resolved.json && yarn run -T tsc-alias -p tsconfig.resolved.json && yarn run -T rimraf tsconfig.resolved.json",
+    "build": "yarn run -T rimraf dist && yarn run -T tsc --build && npm run resolve:aliases",
+    "test": "../../../../../node_modules/.bin/jest --bail --forceExit --testPathPattern=src"
+  },
+  "devDependencies": {
+    "@medusajs/framework": "2.13.0"
+  },
+  "peerDependencies": {
+    "@medusajs/framework": "^2.13.0"
+  },
+  "dependencies": {
+    "@levios/framework": "^0.1.0",
+    "@levios/turkey-common": "^0.1.0"
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "name": "@levios/framework",
+  "version": "0.1.0",
+  "description": "Levios Commerce Framework - Core utilities and base classes for modular e-commerce",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "!dist/**/__tests__",
+    "!dist/**/__mocks__",
+    "!dist/**/__fixtures__"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/medusajs/medusa",
+    "directory": "packages/levios/core/framework"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": "Levios",
+  "license": "MIT",
+  "scripts": {
+    "watch": "yarn run -T tsc --build --watch",
+    "build": "yarn run -T rimraf dist && yarn run -T tsc --build",
+    "test": "../../../../node_modules/.bin/jest --bail --forceExit --testPathPattern=src"
+  },
+  "devDependencies": {
+    "@medusajs/framework": "2.13.0"
+  },
+  "peerDependencies": {
+    "@medusajs/framework": "^2.13.0"
+  }
+}
