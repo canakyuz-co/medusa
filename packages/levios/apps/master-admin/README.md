@@ -2,6 +2,22 @@
 
 Master admin application for provisioning tenants and stores.
 
+## API Draft
+
+Located under `src/api/admin`:
+- `GET /admin/tenants`, `POST /admin/tenants`
+- `GET /admin/stores`, `POST /admin/stores`
+- `PATCH /admin/stores/:id`
+- `GET /admin/commission-rules`, `POST /admin/commission-rules`
+
+## Config
+
+Enable `@levios/tenancy` in `medusa-config.ts` to load tenant models.
+
+## Auth
+
+`src/api/middlewares.ts` protects master-admin routes with admin auth.
+
 ## Core Models (Draft)
 
 ### Tenant

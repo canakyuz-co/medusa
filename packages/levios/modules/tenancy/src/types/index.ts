@@ -15,6 +15,7 @@ export type StoreConfigDTO = {
   store_slug: string
   region_id?: string | null
   currency_code: string
+  whatsapp_number?: string | null
   modules_enabled: string[]
   providers_enabled: string[]
   metadata?: Record<string, unknown> | null
@@ -43,6 +44,18 @@ export type CreateStoreConfigDTO = {
   store_slug: string
   region_id?: string | null
   currency_code?: string
+  whatsapp_number?: string | null
+  modules_enabled?: string[]
+  providers_enabled?: string[]
+  metadata?: Record<string, unknown> | null
+}
+
+export type UpdateStoreConfigDTO = {
+  store_name?: string
+  store_slug?: string
+  region_id?: string | null
+  currency_code?: string
+  whatsapp_number?: string | null
   modules_enabled?: string[]
   providers_enabled?: string[]
   metadata?: Record<string, unknown> | null
@@ -61,6 +74,10 @@ export interface ITenancyModuleService {
   createTenant(data: CreateTenantDTO): Promise<TenantDTO>
   listStores(tenantId?: string): Promise<StoreConfigDTO[]>
   createStoreConfig(data: CreateStoreConfigDTO): Promise<StoreConfigDTO>
+  updateStoreConfig(
+    id: string,
+    data: UpdateStoreConfigDTO
+  ): Promise<StoreConfigDTO>
   listCommissionRules(tenantId?: string): Promise<CommissionRuleDTO[]>
   createCommissionRule(
     data: CreateCommissionRuleDTO

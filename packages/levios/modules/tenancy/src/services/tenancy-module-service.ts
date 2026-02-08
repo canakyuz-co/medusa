@@ -19,6 +19,7 @@ import {
   ITenancyModuleService,
   StoreConfigDTO,
   TenantDTO,
+  UpdateStoreConfigDTO,
 } from "@types"
 
 type InjectedDependencies = {
@@ -115,9 +116,36 @@ export class TenancyModuleService
         store_slug: data.store_slug,
         region_id: data.region_id ?? null,
         currency_code: data.currency_code ?? "TRY",
+        whatsapp_number: data.whatsapp_number ?? null,
         modules_enabled: data.modules_enabled ?? [],
         providers_enabled: data.providers_enabled ?? [],
         metadata: data.metadata ?? null,
+      },
+      sharedContext
+    )
+
+    return this.baseRepository_.serialize<StoreConfigDTO>(store)
+  }
+
+  @InjectManager()
+  async updateStoreConfig(
+    id: string,
+    data: UpdateStoreConfigDTO,
+    @MedusaContext() sharedContext: Context = {}
+  ): Promise<StoreConfigDTO> {
+    const store = await this.storeConfigDbService_.update(
+      {
+        selector: { id },
+        data: {
+          store_name: data.store_name,
+          store_slug: data.store_slug,
+          region_id: data.region_id,
+          currency_code: data.currency_code,
+          whatsapp_number: data.whatsapp_number,
+          modules_enabled: data.modules_enabled,
+          providers_enabled: data.providers_enabled,
+          metadata: data.metadata,
+        },
       },
       sharedContext
     )

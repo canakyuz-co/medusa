@@ -7,6 +7,7 @@ export const StoreConfig = model.define("levios_store_config", {
   store_slug: model.text().unique(),
   region_id: model.text().nullable(),
   currency_code: model.text().default("TRY"),
+  whatsapp_number: model.text().nullable(),
   modules_enabled: model.json().default([]),
   providers_enabled: model.json().default([]),
   metadata: model.json().nullable(),
